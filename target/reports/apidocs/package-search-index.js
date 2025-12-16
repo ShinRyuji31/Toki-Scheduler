@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.toki.model"},{"l":"com.toki.repository"},{"l":"com.toki.service"},{"l":"com.toki.ui"},{"l":"com.toki.ui.components"},{"l":"com.toki.ui.controller"},{"l":"com.toki.ui.forms"},{"l":"com.toki.ui.util"},{"l":"com.toki.ui.view"}];updateSearchResults();

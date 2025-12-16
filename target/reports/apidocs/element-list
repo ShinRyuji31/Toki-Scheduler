@@ -1,9 +1,0 @@
-com.toki.model
-com.toki.repository
-com.toki.service
-com.toki.ui
-com.toki.ui.components
-com.toki.ui.controller
-com.toki.ui.forms
-com.toki.ui.util
-com.toki.ui.view
