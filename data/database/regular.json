@@ -1,0 +1,56 @@
+[
+  {
+    "day": "MONDAY",
+    "time": "08:00:00",
+    "ID": 1,
+    "title": "Morning Workout",
+    "type": "Regular",
+    "group": "Health",
+    "notes": "Light cardio & stretching"
+  },
+  {
+    "day": "MONDAY",
+    "time": "10:30:00",
+    "ID": 2,
+    "title": "Team Meeting",
+    "type": "Regular",
+    "group": "Work",
+    "notes": "Weekly project sync"
+  },
+  {
+    "day": "TUESDAY",
+    "time": "13:00:00",
+    "ID": 3,
+    "title": "Coding Practice",
+    "type": "Regular",
+    "group": "Learning",
+    "notes": "Java & DSA drills"
+  },
+  {
+    "day": "WEDNESDAY",
+    "time": "09:15:00",
+    "ID": 4,
+    "title": "Grocery Shopping",
+    "type": "Regular",
+    "group": "Personal",
+    "notes": "Weekly groceries"
+  },
+  {
+    "day": "SATURDAY",
+    "time": "07:30:00",
+    "ID": 5,
+    "title": "Gym Training",
+    "type": "Regular",
+    "group": "Health",
+    "notes": "Leg day"
+  },
+  {
+    "day": "SATURDAY",
+    "time": "09:30:00",
+    "ID": 6,
+    "title": "Study JavaFX",
+    "type": "Regular",
+    "group": "College",
+    "notes": "Continue UI layout"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "date": "2025-12-13",
+    "time": "10:00:00",
+    "ID": 1,
+    "title": "Friend's Birthday Celebration",
+    "type": "Special",
+    "group": "Social",
+    "notes": "Bring a small gift"
+  },
+  {
+    "date": "2025-12-20",
+    "time": "18:30:00",
+    "ID": 2,
+    "title": "Christmas Rehearsal",
+    "type": "Special",
+    "group": "Church",
+    "notes": "Acoustic band practice"
+  },
+  {
+    "date": "2025-12-31",
+    "time": "23:00:00",
+    "ID": 3,
+    "title": "New Year Countdown",
+    "type": "Special",
+    "group": "Family",
+    "notes": "Gathering and fireworks"
+  }
+]

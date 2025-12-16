@@ -1,0 +1,38 @@
+[
+  {
+    "due": "2025-12-13",
+    "priority": "H",
+    "ID": 1,
+    "title": "Finish Graph Assignment",
+    "type": "Task",
+    "group": "College",
+    "notes": "Part 1 & Part 2 must be submitted"
+  },
+  {
+    "due": "2025-12-15",
+    "priority": "M",
+    "ID": 2,
+    "title": "Clean Room",
+    "type": "Task",
+    "group": "Personal",
+    "notes": "General cleaning & laundry"
+  },
+  {
+    "due": "2025-12-24",
+    "priority": "L",
+    "ID": 3,
+    "title": "Buy Christmas Gift",
+    "type": "Task",
+    "group": "Family",
+    "notes": "Look for something meaningful"
+  },
+  {
+    "due": "2025-12-13",
+    "priority": "M",
+    "ID": 4,
+    "title": "Prepare Presentation",
+    "type": "Task",
+    "group": "Work",
+    "notes": "Slides + speaking notes"
+  }
+]
