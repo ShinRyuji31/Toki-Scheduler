@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
  * Label Component that displays real-time digital clock using multithreading.
  */
 public class DigitalClock extends Label {
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
 
     public DigitalClock() {
         super();

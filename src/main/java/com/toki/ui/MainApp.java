@@ -60,7 +60,7 @@ public class MainApp extends Application {
         // Pass dependencies to DashboardView
         dashboardView = new DashboardView(primaryStage, schedulerService, currentUser);
         Scene scene = new Scene(dashboardView.getView(), 1440, 810);
-        CssManager.apply(scene, "/css/dashboard.css");
+        CssManager.apply(scene, "/css/dashboard.css", "/css/digitalclock.css");
 
         primaryStage.setTitle("Toki Scheduler");
         primaryStage.setScene(scene);

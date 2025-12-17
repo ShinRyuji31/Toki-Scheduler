@@ -19,24 +19,29 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Repository implementation for Regular Agendas.
+ * Manages in-memory storage of AgendaRegular objects.
+ */
 public class AgendaRegularRepository implements Agenda_RepositoryInterface<AgendaRegular> {
 
-    private static final String FILE_PATH = "data/database/regular.json"; 
+    private static final String FILE_PATH = "data/database/regular.json";
     private final Gson gson;
     private final Type agendaListType;
 
     public AgendaRegularRepository() {
         this.gson = new GsonBuilder()
-                        .setPrettyPrinting()
-                        .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-                        .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
-                        .create();
-                        
-        this.agendaListType = new TypeToken<List<AgendaRegular>>() {}.getType();
-        
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
+                .create();
+
+        this.agendaListType = new TypeToken<List<AgendaRegular>>() {
+        }.getType();
+
         File file = new File(FILE_PATH);
         File parentDir = file.getParentFile();
-        
+
         if (parentDir != null && !parentDir.exists()) {
             parentDir.mkdirs();
         }
@@ -68,12 +73,12 @@ public class AgendaRegularRepository implements Agenda_RepositoryInterface<Agend
     @Override
     public void save(AgendaRegular newAgenda) {
         List<AgendaRegular> agendas = findAll();
-        
+
         // Filter out existing agenda by ID (Update logic)
         List<AgendaRegular> filteredAgendas = agendas.stream()
-            .filter(a -> a.getID() != newAgenda.getID()) // <<< REFACTOR: Use getId()
-            .collect(Collectors.toList());
-        
+                .filter(a -> a.getID() != newAgenda.getID()) // <<< REFACTOR: Use getId()
+                .collect(Collectors.toList());
+
         filteredAgendas.add(newAgenda);
         saveAll(filteredAgendas);
     }
@@ -81,17 +86,17 @@ public class AgendaRegularRepository implements Agenda_RepositoryInterface<Agend
     @Override
     public AgendaRegular findByID(int ID) { // <<< REFACTOR: Use int ID
         return findAll().stream()
-            .filter(agenda -> agenda.getID() == ID) // <<< REFACTOR: Use getId()
-            .findFirst()
-            .orElse(null);
+                .filter(agenda -> agenda.getID() == ID) // <<< REFACTOR: Use getId()
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public void deleteByID(int ID) { // <<< REFACTOR: Use int ID
         List<AgendaRegular> agendas = findAll();
         List<AgendaRegular> updatedList = agendas.stream()
-            .filter(a -> a.getID() != ID) // <<< REFACTOR: Use getId()
-            .collect(Collectors.toList());
+                .filter(a -> a.getID() != ID) // <<< REFACTOR: Use getId()
+                .collect(Collectors.toList());
         if (updatedList.size() < agendas.size()) {
             saveAll(updatedList);
         }

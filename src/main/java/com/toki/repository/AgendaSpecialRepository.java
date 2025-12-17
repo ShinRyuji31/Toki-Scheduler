@@ -19,29 +19,34 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Repository implementation for Special Agendas.
+ * Manages in-memory storage of AgendaSpecial objects.
+ */
 public class AgendaSpecialRepository implements Agenda_RepositoryInterface<AgendaSpecial> {
 
-    private static final String FILE_PATH = "data/database/special.json"; 
+    private static final String FILE_PATH = "data/database/special.json";
     private final Gson gson;
     private final Type agendaListType;
 
     public AgendaSpecialRepository() {
         this.gson = new GsonBuilder()
-                        .setPrettyPrinting()
-                        .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-                        .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()) // Tambahkan juga
-                        .create();
-                        
-        this.agendaListType = new TypeToken<List<AgendaSpecial>>() {}.getType();
-        
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()) // Tambahkan juga
+                .create();
+
+        this.agendaListType = new TypeToken<List<AgendaSpecial>>() {
+        }.getType();
+
         File file = new File(FILE_PATH);
         File parentDir = file.getParentFile();
-        
+
         // 2. Buat direktori jika belum ada
         if (parentDir != null && !parentDir.exists()) {
             parentDir.mkdirs();
         }
-        
+
         // 3. FIX EOFException: Jamin file ada dan berisi "[]" jika kosong
         if (!file.exists() || file.length() == 0) {
             try {
@@ -49,7 +54,7 @@ public class AgendaSpecialRepository implements Agenda_RepositoryInterface<Agend
                     file.createNewFile();
                 }
                 // Tulis array kosong ke file
-                saveAll(new ArrayList<>()); 
+                saveAll(new ArrayList<>());
                 System.out.println("✅ Task data file initialized: " + FILE_PATH);
             } catch (IOException e) {
                 System.err.println("❌ Error initializing Task data file: " + e.getMessage());
@@ -83,12 +88,12 @@ public class AgendaSpecialRepository implements Agenda_RepositoryInterface<Agend
     @Override
     public void save(AgendaSpecial newAgenda) {
         List<AgendaSpecial> agendas = findAll();
-        
+
         // Filter out existing agenda by ID (Update logic)
         List<AgendaSpecial> filteredAgendas = agendas.stream()
-            .filter(a -> a.getID() != newAgenda.getID()) // <<< REFACTOR: Use getId()
-            .collect(Collectors.toList());
-        
+                .filter(a -> a.getID() != newAgenda.getID()) // <<< REFACTOR: Use getId()
+                .collect(Collectors.toList());
+
         filteredAgendas.add(newAgenda);
         saveAll(filteredAgendas);
     }
@@ -96,22 +101,21 @@ public class AgendaSpecialRepository implements Agenda_RepositoryInterface<Agend
     @Override
     public AgendaSpecial findByID(int ID) { // <<< REFACTOR: Use int ID
         return findAll().stream()
-            .filter(agenda -> agenda.getID() == ID) // <<< REFACTOR: Use getId()
-            .findFirst()
-            .orElse(null);
+                .filter(agenda -> agenda.getID() == ID) // <<< REFACTOR: Use getId()
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public void deleteByID(int ID) { // <<< REFACTOR: Use int ID
         List<AgendaSpecial> agendas = findAll();
         List<AgendaSpecial> updatedList = agendas.stream()
-            .filter(a -> a.getID() != ID) // <<< REFACTOR: Use getId()
-            .collect(Collectors.toList());
+                .filter(a -> a.getID() != ID) // <<< REFACTOR: Use getId()
+                .collect(Collectors.toList());
         if (updatedList.size() < agendas.size()) {
             saveAll(updatedList);
         }
     }
-
 
     private static class LocalDateAdapter extends TypeAdapter<LocalDate> {
         private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE;
